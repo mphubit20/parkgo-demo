@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="./assets/index-BbM_IPcG.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-6RnZTMCW.css">
+  <script type="module" crossorigin src="./assets/index-DD0YcBiU.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BNOMKTMz.css">
 </head>
 <body>
 <main class="wrap">
@@ -61,11 +61,14 @@
       <nav class="tabbar" id="tabbar" aria-label="เมนูหลัก"></nav>
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
       <div class="welcome" id="welcome">
-        <div class="pinart" id="welArt"></div>
+        <div class="wtop"><div class="pinart" id="welArt"></div><div class="wname">Park<b>Go</b></div></div>
         <h1>หาที่จอดง่าย<br>ทุกการเดินทาง</h1>
-        <ul id="welList"></ul>
+        <p class="wsub">แอปที่เชื่อมคนหาที่จอด กับเจ้าของพื้นที่ว่าง</p>
+        <p class="wq">เลือกฝั่งที่อยากลอง</p>
+        <button class="role" type="button" data-act="start-app" data-role="driver"><span class="ri" id="riDriver"></span><span><b>ฉันกำลังหาที่จอด</b><small>ดูที่ว่างจากกล้อง AI จอง และจ่ายเงินในแอป</small></span><span class="go" id="goDriver"></span></button>
+        <button class="role" type="button" data-act="start-app" data-role="owner"><span class="ri" id="riOwner"></span><span><b>ฉันมีพื้นที่ว่างให้จอด</b><small>ลงทะเบียนพื้นที่ ตั้งราคา ดูรายได้ย้อนหลัง</small></span><span class="go" id="goOwner"></span></button>
+        <p class="types">ลานจอดมี 2 แบบ <b>Reserve</b> ติดกล้อง AI จองในแอปได้ และ <b>Walk-in</b> ไม่ติดกล้อง จ่ายหน้างานผ่านแอป</p>
         <div style="flex:1"></div>
-        <button class="btn" type="button" data-act="start-app">เริ่มใช้งาน</button>
         <p class="fine" style="color:rgba(255,255,255,.75);text-align:center">ตัวอย่างโปรโตไทป์ ข้อมูลทั้งหมดเป็นข้อมูลจำลอง</p>
       </div>
     </div>
