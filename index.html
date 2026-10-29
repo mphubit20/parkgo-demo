@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ParkGo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="./assets/index-BbM_IPcG.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-6RnZTMCW.css">
+</head>
+<body>
+<main class="wrap">
+  <section class="stage">
+    <header class="topbar">
+      <div class="brand">Park<b>Go</b></div>
+      <div class="seg" role="group" aria-label="เลือกมุมมองในการเดโม">
+        <button type="button" data-mode="driver" aria-pressed="true">คนขับรถ</button>
+        <button type="button" data-mode="owner" aria-pressed="false">เจ้าของพื้นที่</button>
+        <button type="button" data-mode="admin" aria-pressed="false">แอดมิน</button>
+      </div>
+    </header>
+    <div class="phone" id="phone">
+      <div class="screen" id="screen">
+        <div class="pane" id="paneMap">
+          <div id="map" role="application" aria-label="แผนที่ที่จอดรถ ลากเพื่อเลื่อน ใช้สองนิ้วหรือปุ่มเพื่อซูม"></div>
+          <div class="mtop" id="mtop">
+            <div class="search" id="searchWrap">
+              <span class="ic-wrap" id="searchIc"></span>
+              <input id="q" type="text" placeholder="ค้นหาสถานที่ที่จะไป หรือลานจอด" autocomplete="off" aria-label="ค้นหาสถานที่หรือลานจอด">
+              <button class="iconbtn" type="button" id="clearQ" data-act="clear-q" aria-label="ล้างคำค้นหา" hidden></button>
+              <button class="avatar" type="button" data-act="open-profile" aria-label="โปรไฟล์ของฉัน">ส</button>
+              <div class="suggest" id="suggest" hidden></div>
+            </div>
+            <div class="chips" id="filterChips">
+              <button class="chip citychip" type="button" id="cityChip" data-act="nation"></button>
+              <button class="chip destchip" type="button" id="destChip" data-act="clear-dest" hidden></button>
+              <button class="chip" type="button" data-act="filter" data-f="avail" aria-pressed="false">ว่างตอนนี้</button>
+              <button class="chip" type="button" data-act="filter" data-f="reserve" aria-pressed="false"><span class="sw r"></span>Reserve</button>
+              <button class="chip" type="button" data-act="filter" data-f="walkin" aria-pressed="false"><span class="sw w"></span>Walk-in</button>
+              <button class="chip" type="button" data-act="filter" data-f="open" aria-pressed="false">เปิดอยู่</button>
+            </div>
+          </div>
+          <div class="routebar" id="routebar" hidden></div>
+          <div class="fabs" id="fabs">
+            <div class="zoom">
+              <button type="button" data-act="zoom" data-d="1" aria-label="ขยายแผนที่" id="zin"></button>
+              <button type="button" data-act="zoom" data-d="-1" aria-label="ย่อแผนที่" id="zout"></button>
+            </div>
+            <button class="fab" type="button" data-act="locate" aria-label="ไปที่ตำแหน่งของฉัน" id="locBtn"></button>
+          </div>
+          <div class="sheet" id="sheet" role="region" aria-label="รายการที่จอด"></div>
+        </div>
+        <div class="pane scroll" id="paneTrips" hidden></div>
+        <div class="pane scroll" id="paneProfile" hidden></div>
+        <div class="pane scroll" id="paneOwner" hidden></div>
+        <div class="pane scroll" id="paneAdmin" hidden></div>
+        <div class="pane flow" id="flow" hidden></div>
+      </div>
+      <nav class="tabbar" id="tabbar" aria-label="เมนูหลัก"></nav>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="welcome" id="welcome">
+        <div class="pinart" id="welArt"></div>
+        <h1>หาที่จอดง่าย<br>ทุกการเดินทาง</h1>
+        <ul id="welList"></ul>
+        <div style="flex:1"></div>
+        <button class="btn" type="button" data-act="start-app">เริ่มใช้งาน</button>
+        <p class="fine" style="color:rgba(255,255,255,.75);text-align:center">ตัวอย่างโปรโตไทป์ ข้อมูลทั้งหมดเป็นข้อมูลจำลอง</p>
+      </div>
+    </div>
+    <p class="fine">ข้อมูลทั้งหมดเป็นตัวอย่าง ชื่อลาน ราคา และจำนวนช่องไม่ใช่ข้อมูลจริง แผนที่จริงจาก OpenStreetMap (ผ่าน OpenFreeMap ฟรี ไม่ต้องใช้ API key) ตำแหน่งลานจอดเป็นข้อมูลสมมติ การชำระเงินและการตรวจเอกสารของแอดมินเป็นหน้าจำลอง ไฟล์ที่เลือกไม่ถูกส่งออกจากเครื่อง</p>
+  </section>
+
+  <aside class="guide">
+    <div>
+      <h2>ลองเดโมตามลำดับนี้</h2>
+      <ol>
+        <li>พิมพ์ชื่อสถานที่ที่จะไป เช่น "พารากอน" "จุฬา" "เทอร์มินอล" แล้วเลือก จะขึ้นลานจอดใกล้ปลายทาง พร้อมเวลาเดินและวงรัศมี 500 ม.</li>
+        <li>แตะชิปชื่อเมืองมุมซ้ายบน (หรือซูมออกสุด) เพื่อดูแผนที่ทั้งประเทศ 12 เมือง แตะเมืองเพื่อเข้าไป หรือค้นหา "ป่าตอง" "ท่าแพ" "บึงแก่นนคร" ได้เลย</li>
+        <li>กดหมุดสีน้ำเงิน "AI · ว่าง" ดูจำนวนช่องที่กล้อง AI นับให้ กด "นำทาง" ดูเส้นทาง (ลานที่เจ้าของปักเส้นทางเข้าลานไว้จะเห็นเส้นประด้วย) แล้วกด "จองที่จอด" เลือกเวลา ทะเบียน วิธีชำระเงิน</li>
+        <li>กดหมุด Walk-in ขอบประสีขาว ไม่มีจำนวนช่องว่าง จ่ายเงินหน้างาน ลานทุกแห่งมีป้าย ParkGo Verified</li>
+        <li>สลับเป็น "เจ้าของพื้นที่" แตะวันที่ย้อนหลังได้ 14 วัน (หรือแตะแท่งกราฟ) ดูรายได้ 70/30 และกด "ปักหมุด / วาดเส้นทางบนแผนที่" เพื่อแตะบนแผนที่จริง</li>
+        <li>แท็บ "เพิ่มพื้นที่" ทำ 4 ขั้นตอน ข้อมูล → ปักหมุด → เอกสาร → ส่ง (กด "ใช้เอกสารตัวอย่าง" เพื่อข้ามการเลือกไฟล์) ลานจะยังไม่ขึ้นบนแผนที่คนขับ</li>
+        <li>สลับเป็น "แอดมิน" เปิดรายการที่รอตรวจ ดูเอกสารและหมุดบนแผนที่ ติ๊กตรวจครบแล้วอนุมัติ (หรือขอข้อมูลเพิ่ม / ไม่อนุมัติ) แล้วกลับไปโหมดคนขับ จะเห็นลานขึ้นพร้อมป้าย Verified</li>
+      </ol>
+    </div>
+    <div>
+      <h2>สองรูปแบบพื้นที่จอด</h2>
+      <div class="cmp">
+        <div><span class="tag r">ParkGo Reserve</span>
+          <ul><li>กล้อง AI นับช่องว่างแบบเรียลไทม์</li><li>จองและจ่ายเงินในแอป</li><li>ParkGo รับ 30% เจ้าของได้ 70%</li></ul></div>
+        <div class="w"><span class="tag w">ParkGo Walk-in</span>
+          <ul><li>ไม่มีกล้อง แสดงตำแหน่ง ราคา เวลา ทางเข้า</li><li>ไปตรวจสอบและจ่ายเงินหน้างาน</li><li>ยังไม่มีค่าคอมมิชชัน ใช้วัดดีมานด์</li></ul></div>
+      </div>
+    </div>
+  </aside>
+</main>
+</body>
+</html>
